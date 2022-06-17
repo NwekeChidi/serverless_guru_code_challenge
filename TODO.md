@@ -12,6 +12,7 @@
 - [ ] Create `dev` branch
 - [ ] Build CI/CD pipeline for `dev` and `prod`/`main` branch
 - [ ] Write lambda functions
+- [ ] Update README
 
 ## Optional
 
