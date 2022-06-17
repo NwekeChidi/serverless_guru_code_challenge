@@ -5,11 +5,11 @@ const BLOGS_TABLE = process.env.BLOGS_TABLE;
 const dynamoDbClient = new AWS.DynamoDB.DocumentClient();
 
 class Dynamo {
-    // Create User
+    // Create Document
     async create (data, sortKey) {
         const _id = uuidv4();
         data.PK = _id;
-        data.SK = sorkKey;
+        data.SK = sortKey;
         const params = {
             TableName: BLOGS_TABLE,
             Item: data,
