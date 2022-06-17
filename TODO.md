@@ -8,7 +8,7 @@
 - [x] Install suitable Serverless boiler plate for project (`aws-nodejs` template)
 - [x] Install dependencies
 - [x] Configure DynamoDb to `serveless.yml`
-- [ ] Create `src` folder and move `handler.js`
+- [x] Create `src` folder and move `handler.js`
 - [ ] Create `dev` branch
 - [ ] Build CI/CD pipeline for `dev` and `prod`/`main` branch
 - [ ] Write lambda functions
