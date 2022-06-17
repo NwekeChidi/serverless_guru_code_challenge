@@ -3,7 +3,7 @@ const userLambda = require("../lambda/userLambda");
 
 // create user
 router.post(
-    "/users/new",
+    "/new",
     userLambda.create
 );
 

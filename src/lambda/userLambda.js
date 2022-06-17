@@ -4,7 +4,7 @@ const userLambda = {}
 
 userLambda.create = async (req, res) => {
     const payload = req.body;
-    if ("name" in payload && payload.name === string){
+    if ("name" in payload && typeof payload.name === "string"){
         data = await dynamo.createUser(payload);
         if ("error" in data){
             res.status(500).json({
