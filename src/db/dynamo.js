@@ -6,10 +6,10 @@ const dynamoDbClient = new AWS.DynamoDB.DocumentClient();
 
 class Dynamo {
     // Create User
-    async createUser (data) {
+    async create (data, sortKey) {
         const _id = uuidv4();
         data.PK = _id;
-        data.SK = "user";
+        data.SK = sorkKey;
         const params = {
             TableName: BLOGS_TABLE,
             Item: data,
@@ -20,7 +20,7 @@ class Dynamo {
             return data;
         } catch (error) {
             console.log(error);
-            return { error: "Could not create user" };
+            return { error: "Failed to create new document" };
         }
     }
 }

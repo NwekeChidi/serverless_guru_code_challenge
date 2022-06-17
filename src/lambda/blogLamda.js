@@ -1,11 +1,11 @@
 const dynamo = require("../db/dynamo");
 
-const userLambda = {}
+const blogLambda = {}
 
-userLambda.create = async (req, res) => {
+blogLambda.create = async (req, res) => {
     const payload = req.body;
-    if ("name" in payload && typeof payload.name === "string"){
-        data = await dynamo.create(payload, "user");
+    if ("post" in payload && typeof payload.post === "string"){
+        data = await dynamo.create(payload, "blog");
         if ("error" in data){
             res.status(500).json({
                 status: "failed",
@@ -19,4 +19,4 @@ userLambda.create = async (req, res) => {
     }
 };
 
-module.exports = userLambda;
+module.exports = blogLambda;
