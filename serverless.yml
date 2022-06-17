@@ -5,6 +5,7 @@ custom:
 
 provider:
   name: aws
+  role: arn:aws:iam::517822307334:user/serverless-crud
   runtime: nodejs16.x
   region: us-west-1
   environment:
