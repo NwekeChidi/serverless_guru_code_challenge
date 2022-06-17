@@ -9,7 +9,7 @@ app.use(express.json());
 app.use("/users", require("./routes/users"));
 
 app.get("/", (req, res, next) => {
-    return res.sendStatus(200);
+    res.sendStatus(200);
   });
 
 app.use((req, res, next) => {
