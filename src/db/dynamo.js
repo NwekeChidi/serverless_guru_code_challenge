@@ -1,5 +1,5 @@
 const AWS = require("aws-sdk");
-const uuid = require("uuid");
+const { v4 :uuidv4 } = require("uuid");
 
 const BLOGS_TABLE = process.env.BLOGS_TABLE;
 const dynamoDbClient = new AWS.DynamoDB.DocumentClient();
@@ -7,7 +7,7 @@ const dynamoDbClient = new AWS.DynamoDB.DocumentClient();
 class Dynamo {
     // Create User
     async createUser (data) {
-        const _id = uuid.v5();
+        const _id = uuidv4();
         data.PK = _id;
         data.SK = "user";
         const params = {
