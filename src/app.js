@@ -8,7 +8,7 @@ app.use(express.json());
 // routes
 app.use("/users", require("./routes/users"));
 
-app.use("/", (req, res, next) => {
+app.get("/", (req, res, next) => {
     return res.sendStatus(200);
   });
 
