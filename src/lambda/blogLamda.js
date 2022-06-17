@@ -4,6 +4,7 @@ const blogLambda = {}
 
 blogLambda.create = async (req, res) => {
     const payload = req.body;
+    payload.blogger = req.params?.userId;
     if ("post" in payload && typeof payload.post === "string"){
         data = await dynamo.create(payload, "blog");
         if ("error" in data){

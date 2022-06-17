@@ -3,7 +3,7 @@ const blogLambda = require("../lambda/blogLambda");
 
 // create user
 router.post(
-    "/new",
+    "/new/:userId",
     blogLambda.create
 );
 
