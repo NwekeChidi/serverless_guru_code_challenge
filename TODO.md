@@ -6,9 +6,9 @@
 - [x] Add secrets IAM secrets to repository (github)
 - [x] Download secrets to device
 - [x] Install suitable Serverless boiler plate for project (`aws-nodejs` template)
+- [x] Install dependencies
 - [ ] Configure DynamoDb to `serveless.yml`
 - [ ] Create `src` folder and move `handler.js`
-- [ ] Install dependencies
 - [ ] Create `dev` branch
 - [ ] Build CI/CD pipeline for `dev` and `prod`/`main` branch
 - [ ] Write lambda functions
@@ -19,3 +19,4 @@
 - [ ] Package lambda
 - [ ] Bash scripts to support deployment
 - [ ] Unit tests
+- [ ] Add Emulation for local
