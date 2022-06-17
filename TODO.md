@@ -10,7 +10,7 @@
 - [x] Configure DynamoDb to `serveless.yml`
 - [x] Create `src` folder and move `handler.js`
 - [x] Create `dev` branch
-- [ ] Build CI/CD pipeline for `dev` and `prod`/`main` branch
+- [x] Build CI/CD pipeline for `dev` and `prod`/`main` branch
 - [ ] Write lambda functions
 - [ ] Update README
 
