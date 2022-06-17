@@ -34,7 +34,6 @@ blogLambda.getPost = async (req, res) => {
         status: "success",
         item
     })
-
 }
 
 module.exports = blogLambda;

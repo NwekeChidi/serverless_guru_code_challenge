@@ -26,9 +26,6 @@ class Dynamo {
 
   // Get Blog Post
   async getBlogPost(sortKey) {
-    const _id = uuidv4();
-    data.PK = _id;
-    data.SK = sortKey;
     const params = {
       TableName: BLOGS_TABLE,
       key: {
