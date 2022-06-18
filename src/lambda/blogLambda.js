@@ -22,7 +22,7 @@ blogLambda.create = async (req, res) => {
 
 
 blogLambda.getPost = async (req, res) => {
-    const { sortKey } = req.params;
+    const { id } = req.params;
     const item = await dynamo.getBlogPost(sortKey);
     if ("error" in item) {
          return res.status(item.statusCode).json({
@@ -37,7 +37,7 @@ blogLambda.getPost = async (req, res) => {
 }
 
 blogLambda.updatePost = async (req, res) => {
-    const { sortKey } = req.params;
+    const { id } = req.params;
     const { body } = req;
     const result = await dynamo.updatePost(sortKey, body);
     if ("error" in result) {

@@ -9,13 +9,13 @@ router.post(
 
 // get blog post
 router.get(
-    "/view/:sortKey",
+    "/view/:id",
     blogLambda.getPost
 );
 
 // edit blog post
 router.patch(
-    "/update/:sortKey",
+    "/update/:id",
     blogLambda.updatePost
 )
 module.exports = router;

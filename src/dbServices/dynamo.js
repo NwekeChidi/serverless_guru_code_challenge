@@ -26,11 +26,11 @@ class Dynamo {
   }
 
   // Get Blog Post
-  async getBlogPost(sortKey) {
+  async getBlogPost(PK) {
     const params = {
       TableName: BLOGS_TABLE,
       Key: {
-        SK: sortKey,
+        PK
       },
     };
 
@@ -54,7 +54,7 @@ class Dynamo {
   }
 
   // Update Blog Post
-  async updatePost(SK, data) {
+  async updatePost(PK, data) {
 
     const attrsName = Object.keys(data);
     const values = Object.values(data);
@@ -78,7 +78,7 @@ class Dynamo {
     const params = {
       TableName: BLOGS_TABLE,
       Key: {
-        SK,
+        PK,
       },
       UpdateExpression,
       ExpressionAttributeValues,
