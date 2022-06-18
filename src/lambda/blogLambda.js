@@ -52,4 +52,20 @@ blogLambda.updatePost = async (req, res) => {
     })
 }
 
+
+blogLambda.deletePost = async (req, res) => {
+    const { id } = req.params;
+    const result = await dynamo.deletePost(id);
+    if ("error" in result) {
+        return res.status(result.statusCode).json({
+            status: "failed",
+            error: result.error
+        });
+    }
+    res.json({
+        status: "success",
+        message: result
+    })
+}
+
 module.exports = blogLambda;

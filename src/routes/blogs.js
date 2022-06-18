@@ -17,5 +17,11 @@ router.get(
 router.patch(
     "/update/:id",
     blogLambda.updatePost
+);
+
+// delete blog post
+router.delete(
+    "/delete/:id",
+    blogLambda.deletePost
 )
 module.exports = router;

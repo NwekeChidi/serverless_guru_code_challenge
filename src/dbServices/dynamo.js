@@ -97,6 +97,28 @@ class Dynamo {
       };
     }
   }
+
+  // Delete Blog Post
+  async deletePost(PK) {
+
+    const params = {
+      TableName: BLOGS_TABLE,
+      Key: {
+        PK,
+        SK: "blog"
+      }
+    };
+    try {
+      await dynamoDbClient.delete(params).promise();
+      return { message: "Delete Successful" };
+    } catch (error) {
+      console.log(error);
+      return {
+        statusCode: 500,
+        error: "Could not delete post",
+      };
+    }
+  }
 }
 
 module.exports = new Dynamo();
