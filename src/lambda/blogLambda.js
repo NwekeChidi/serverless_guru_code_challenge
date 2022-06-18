@@ -23,6 +23,7 @@ blogLambda.create = async (req, res) => {
 
 blogLambda.getPost = async (req, res) => {
     const { id } = req.params;
+    console.log(id, typeof id)
     const item = await dynamo.getBlogPost(id);
     if ("error" in item) {
          return res.status(item.statusCode).json({
@@ -43,7 +44,7 @@ blogLambda.updatePost = async (req, res) => {
     if ("error" in result) {
         return res.status(result.statusCode).json({
             status: "failed",
-            error: item.error
+            error: result.error
         });
     }
     res.json({
