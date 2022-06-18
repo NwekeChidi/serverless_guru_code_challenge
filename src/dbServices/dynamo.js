@@ -41,7 +41,7 @@ class Dynamo {
       } else {
         return {
           statusCode: 404,
-          error: 'Could not find item with provided "sortKey"',
+          error: 'Could not find item with provided "id"',
         };
       }
     } catch (error) {
