@@ -88,7 +88,7 @@ class Dynamo {
     };
     try {
       await dynamoDbClient.update(params).promise();
-      return "Update Successful";
+      return { message: "Update Successful" };
     } catch (error) {
       console.log(error);
       return {
