@@ -29,7 +29,7 @@ class Dynamo {
   async getBlogPost(sortKey) {
     const params = {
       TableName: BLOGS_TABLE,
-      key: {
+      Key: {
         SK: sortKey,
       },
     };
@@ -76,7 +76,7 @@ class Dynamo {
 
     // now you have all the params
     const params = {
-      TableName,
+      TableName: BLOGS_TABLE,
       Key: {
         SK,
       },
