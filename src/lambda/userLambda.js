@@ -1,4 +1,4 @@
-const dynamo = require("../db/dynamo");
+const dynamo = require("../dbServices/dynamo");
 
 const userLambda = {}
 

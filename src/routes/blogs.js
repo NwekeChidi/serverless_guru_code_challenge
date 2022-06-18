@@ -12,4 +12,10 @@ router.get(
     "/view/:sortKey",
     blogLambda.getPost
 );
+
+// edit blog post
+router.patch(
+    "/update/:sortKey",
+    blogLambda.updatePost
+)
 module.exports = router;

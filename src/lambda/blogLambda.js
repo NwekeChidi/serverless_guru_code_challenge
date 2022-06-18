@@ -1,4 +1,4 @@
-const dynamo = require("../db/dynamo");
+const dynamo = require("../dbServices/dynamo");
 
 const blogLambda = {}
 
@@ -33,6 +33,22 @@ blogLambda.getPost = async (req, res) => {
     res.json({
         status: "success",
         item
+    })
+}
+
+blogLambda.updatePost = async (req, res) => {
+    const { sortKey } = req.params;
+    const { body } = req;
+    const result = await dynamo.updatePost(sortKey, body);
+    if ("error" in result) {
+        return res.status(result.statusCode).json({
+            status: "failed",
+            error: item.error
+        });
+    }
+    res.json({
+        status: "success",
+        message: result
     })
 }
 
