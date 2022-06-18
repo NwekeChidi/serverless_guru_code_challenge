@@ -30,7 +30,8 @@ class Dynamo {
     const params = {
       TableName: BLOGS_TABLE,
       Key: {
-        PK
+        PK,
+        SK: "blog"
       },
     };
 
@@ -79,6 +80,7 @@ class Dynamo {
       TableName: BLOGS_TABLE,
       Key: {
         PK,
+        SK: "blog"
       },
       UpdateExpression,
       ExpressionAttributeValues,

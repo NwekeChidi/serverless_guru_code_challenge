@@ -23,7 +23,6 @@ blogLambda.create = async (req, res) => {
 
 blogLambda.getPost = async (req, res) => {
     const { id } = req.params;
-    console.log(id, typeof id)
     const item = await dynamo.getBlogPost(id);
     if ("error" in item) {
          return res.status(item.statusCode).json({
