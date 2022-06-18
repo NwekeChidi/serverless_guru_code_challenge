@@ -31,7 +31,7 @@ class Dynamo {
       TableName: BLOGS_TABLE,
       Key: {
         PK,
-        SK: "blog"
+        SK: "blog",
       },
     };
 
@@ -56,7 +56,6 @@ class Dynamo {
 
   // Update Blog Post
   async updatePost(PK, data) {
-
     const attrsName = Object.keys(data);
     const values = Object.values(data);
 
@@ -75,12 +74,11 @@ class Dynamo {
     const ExpressionAttributeValues = zipObject(attributeValueNames, values);
     const ExpressionAttributeNames = zipObject(attributeKeyNames, attrsName);
 
-    // now you have all the params
     const params = {
       TableName: BLOGS_TABLE,
       Key: {
         PK,
-        SK: "blog"
+        SK: "blog",
       },
       UpdateExpression,
       ExpressionAttributeValues,
@@ -100,13 +98,12 @@ class Dynamo {
 
   // Delete Blog Post
   async deletePost(PK) {
-
     const params = {
       TableName: BLOGS_TABLE,
       Key: {
         PK,
-        SK: "blog"
-      }
+        SK: "blog",
+      },
     };
     try {
       await dynamoDbClient.delete(params).promise();

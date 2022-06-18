@@ -11,7 +11,7 @@
 - [x] Create `src` folder and move `handler.js`
 - [x] Create `dev` branch
 - [x] Build CI/CD pipeline for `dev` and `prod`/`main` branch
-- [ ] Write lambda functions
+- [x] Write lambda functions
 - [ ] Update README
 
 ## Optional
