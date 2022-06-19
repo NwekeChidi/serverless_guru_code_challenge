@@ -3,6 +3,11 @@ frameworkVersion: '3'
 
 custom:
   tableName: 'blogs-table-${sls:stage}'
+  dynamodb:
+    start:
+      migrate: true
+    stages:
+      - local
 
 provider:
   name: aws
@@ -35,3 +40,7 @@ resources:
             KeyType: RANGE
         BillingMode: PAY_PER_REQUEST
         TableName: ${self:custom.tableName}
+
+plugins:
+  - serverless-dynamodb-local
+  - serverless-offline

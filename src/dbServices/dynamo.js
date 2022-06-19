@@ -3,7 +3,12 @@ const { v4: uuidv4 } = require("uuid");
 const { zipObject } = require("lodash");
 
 const BLOGS_TABLE = process.env.BLOGS_TABLE;
-const dynamoDbClient = new AWS.DynamoDB.DocumentClient();
+const dynamoDbClientParams = {};
+if (process.env.IS_OFFLINE) {
+  dynamoDbClientParams.region = 'localhost'
+  dynamoDbClientParams.endpoint = 'http://localhost:8000'
+}
+const dynamoDbClient = new AWS.DynamoDB.DocumentClient(dynamoDbClientParams);
 
 class Dynamo {
   // Create Document
@@ -25,13 +30,13 @@ class Dynamo {
     }
   }
 
-  // Get Blog Post
-  async getBlogPost(PK) {
+  // Get Item
+  async getItem(PK, SK) {
     const params = {
       TableName: BLOGS_TABLE,
       Key: {
         PK,
-        SK: "blog",
+        SK,
       },
     };
 

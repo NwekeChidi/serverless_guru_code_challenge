@@ -12,9 +12,9 @@
 - [x] Create `dev` branch
 - [x] Build CI/CD pipeline for `dev` and `prod`/`main` branch
 - [x] Write lambda functions
-- [ ] Update README
+- [x] Update README
 
 ## Optional
 
 - [x] Unit tests
-- [ ] Add support for local
+- [x] Add serverless support for local
