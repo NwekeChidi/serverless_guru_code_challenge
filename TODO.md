@@ -11,12 +11,10 @@
 - [x] Create `src` folder and move `handler.js`
 - [x] Create `dev` branch
 - [x] Build CI/CD pipeline for `dev` and `prod`/`main` branch
-- [ ] Write lambda functions
+- [x] Write lambda functions
 - [ ] Update README
 
 ## Optional
 
-- [ ] Package lambda
-- [ ] Bash scripts to support deployment
-- [ ] Unit tests
-- [ ] Add Emulation for local
+- [x] Unit tests
+- [ ] Add support for local

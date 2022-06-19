@@ -10,11 +10,11 @@ provider:
   runtime: nodejs16.x
   region: us-west-1
   environment:
-    POSTS_TABLE: ${self:custom.tableName}
+    BLOGS_TABLE: ${self:custom.tableName}
 
 functions:
   api:
-    handler: handler.handler
+    handler: src/handler.handler
     events:
       - httpApi: '*'
 
