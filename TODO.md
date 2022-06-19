@@ -17,4 +17,4 @@
 ## Optional
 
 - [x] Unit tests
-- [ ] Add support for local
+- [x] Add serverless support for local

@@ -3,10 +3,14 @@ frameworkVersion: '3'
 
 custom:
   tableName: 'blogs-table-${sls:stage}'
+  dynamodb:
+    start:
+      migrate: true
+    stages:
+      - local
 
 provider:
   name: aws
-  role: arn:aws:iam::517822307334:role/serverless_guru_role
   runtime: nodejs16.x
   region: us-west-1
   environment:
@@ -35,3 +39,7 @@ resources:
             KeyType: RANGE
         BillingMode: PAY_PER_REQUEST
         TableName: ${self:custom.tableName}
+
+plugins:
+  - serverless-dynamodb-local
+  - serverless-offline
