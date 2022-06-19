@@ -14,6 +14,9 @@ const res = {
 
 describe("Testing blogLamba.create, dynamo.create", () => {
     it('should send a status code of 400 if body is empty or "post" not a string', async () => {
+        dynamo.getItem.mockImplementationOnce(() => ({
+            name: "name"
+        }));
         const req = { body: {} };
         await blogLambda.create(req, res);
         expect(res.status).toBeCalledWith(400);
@@ -21,21 +24,45 @@ describe("Testing blogLamba.create, dynamo.create", () => {
 
     it('should send a status code of 400 "post" not a string', async () => {
         const req = { body: { post: 5657 } };
+        dynamo.getItem.mockImplementationOnce(() => ({
+            name: "name"
+        }));
         await blogLambda.create(req, res);
         expect(res.status).toBeCalledWith(400);
     });
     
     it('should send a status code of 500 if item could not be created', async () => {
         const req = { body: { post: "some random post" } };
+        dynamo.getItem.mockImplementationOnce(() => ({
+            name: "name"
+        }));
         dynamo.create.mockImplementationOnce(() => ({
             error: "error"
         }));
         await blogLambda.create(req, res);
         expect(res.status).toBeCalledWith(500);
     });
+
+    it('should send a status code of 404 if a wrong userId is passed', async () => {
+        const req = { params: { id: "some wrong id" } };
+        dynamo.getItem.mockImplementationOnce(() => ({
+            statusCode: 404,
+            error: "error"
+        }));
+        dynamo.create.mockImplementationOnce(() => ({
+            PK: req.params.id,
+            SK: "blog",
+            psot: "some random post"
+        }));
+        await blogLambda.create(req, res);
+        expect(res.status).toBeCalledWith(404);
+    });
     
     it('should send a status code of 201 if item is created', async () => {
         const req = { body: { post: "some random post" } };
+        dynamo.getItem.mockImplementationOnce(() => ({
+            name: "name"
+        }));
         dynamo.create.mockImplementationOnce(() => ({
             PK: "random byte",
             SK: "blog",
@@ -46,10 +73,10 @@ describe("Testing blogLamba.create, dynamo.create", () => {
     });
 });
 
-describe("Testing blogLamba.getPost, dynamo.getBlogPost", () => {
+describe("Testing blogLamba.getPost, dynamo.getItem", () => {
     it('should send a status code of 404 if post was not found with given id', async () => {
         const req = { params: { id: "some wrong id"} };
-        dynamo.getBlogPost.mockImplementationOnce(() => ({
+        dynamo.getItem.mockImplementationOnce(() => ({
             statusCode: 404,
             error: "error"
         }));
@@ -59,7 +86,7 @@ describe("Testing blogLamba.getPost, dynamo.getBlogPost", () => {
 
     it('should send a status code of 500 if a server error occurred', async () => {
         const req = { params: { id: 5657 } };
-        dynamo.getBlogPost.mockImplementationOnce(() => ({
+        dynamo.getItem.mockImplementationOnce(() => ({
             statusCode: 500,
             error: "error"
         }))
@@ -69,7 +96,7 @@ describe("Testing blogLamba.getPost, dynamo.getBlogPost", () => {
     
     it('should send a status code of 200 if item is retrieved', async () => {
         const req = { params: { id: "some correct id" } };
-        dynamo.getBlogPost.mockImplementationOnce(() => ({
+        dynamo.getItem.mockImplementationOnce(() => ({
             PK: req.params.id,
             SK: "blog",
             psot: "some random post"
@@ -77,6 +104,8 @@ describe("Testing blogLamba.getPost, dynamo.getBlogPost", () => {
         await blogLambda.getPost(req, res);
         expect(res.status).toBeCalledWith(200);
     });
+
+    
 });
 
 

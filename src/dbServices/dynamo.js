@@ -30,13 +30,13 @@ class Dynamo {
     }
   }
 
-  // Get Blog Post
-  async getBlogPost(PK) {
+  // Get Item
+  async getItem(PK, SK) {
     const params = {
       TableName: BLOGS_TABLE,
       Key: {
         PK,
-        SK: "blog",
+        SK,
       },
     };
 

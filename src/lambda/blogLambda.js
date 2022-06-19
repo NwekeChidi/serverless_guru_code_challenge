@@ -4,7 +4,14 @@ const blogLambda = {};
 
 blogLambda.create = async (req, res) => {
     const payload = req.body;
-    payload.blogger = req.params?.userId;
+    const blogger = await dynamo.getItem(req.params?.userId, "user");
+    if ("error" in blogger) {
+        res.status(blogger.statusCode); 
+        return res.json({
+                status: "failed",
+                error: blogger.error
+            });
+    } else payload.blogger = blogger;
     if ("post" in payload && typeof payload.post === "string"){
         data = await dynamo.create(payload, "blog");
         if ("error" in data){
@@ -30,7 +37,7 @@ blogLambda.create = async (req, res) => {
 
 blogLambda.getPost = async (req, res) => {
     const { id } = req.params;
-    const item = await dynamo.getBlogPost(id);
+    const item = await dynamo.getItem(id, "blog");
     if ("error" in item) {
         res.status(item.statusCode); 
         return res.json({
