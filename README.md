@@ -120,4 +120,4 @@ sls offline start
 ```
 
 ### Postman Documentation
-View link to postman documentation [here](https://documenter.getpostman.com/view/19837110/UzBmMSfv)
+View postman documentation [here](https://documenter.getpostman.com/view/19837110/UzBmMSfv)
