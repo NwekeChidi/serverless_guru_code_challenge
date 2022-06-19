@@ -18,5 +18,5 @@
 
 - [ ] Package lambda
 - [ ] Bash scripts to support deployment
-- [ ] Unit tests
+- [x] Unit tests
 - [ ] Add Emulation for local

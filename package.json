@@ -6,6 +6,9 @@
     "type": "git",
     "url": "git+https://github.com/NwekeChidi/serverless_guru_code_challenge.git"
   },
+  "scripts": {
+    "test": "jest"
+  },
   "keywords": [
     "aws",
     "serverless-framework",
@@ -25,5 +28,8 @@
     "lodash": "^4.17.21",
     "serverless-http": "^3.0.1",
     "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "jest": "^28.1.1"
   }
 }
